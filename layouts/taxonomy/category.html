@@ -1,0 +1,13 @@
+{{ define "main" }}         <!-- Page containing posts of a particular category -->
+
+<section id="main">
+    <div>
+        <h2>Posts in &ldquo;{{ .Title }}&rdquo;</h2>
+        {{ range .Data.Pages }}
+        {{ .Render "summary"}}  <!-- Use layouts/_default/summary.html -->
+        {{ end }}
+        <h5><a href="/categories">Full Category Index</a></h5>
+    </div>
+</section>
+
+{{ end }}
