@@ -1,16 +1,16 @@
 # Theme variables
 
-This theme can be tweaked using the following `params` variables in `config.toml`.
+This theme can be tweaked using the following `[Params]` variables in `config.toml`.
 
 ```
-[params]
-  Tagline = "My random notes"
+[Params]
+  tagline = "My random notes"
 
   # Go date formats: https://golang.org/pkg/time/#pkg-constants
-  DateForm = "Mon Jan 2, 2006"
+  dateform = "Mon Jan 2, 2006"
 
   # https://github.com/poole/lanyon#themes
-  ThemeColorBase = "8" # Valid values: "8", "9", "a", "b", "c", "d", "e", "f"
+  themecolorbase = "8" # Valid values: "8", "9", "a", "b", "c", "d", "e", "f"
 
   defaultsection = "posts" # Use in Refined theme (layouts/_default/rss.xml)
 ```
@@ -26,8 +26,8 @@ To enable the Isso comment block, the `.Site.Params.isso` block needs to be pres
 - `.Site.Params.isso.tagline` -- This is an HTML string which is appended at the end of the Isso comment thread. Below example gives an idea of how this can be used.
 
 ```
-[params]
-  [params.isso] # Presence of .Site.Params.isso will enable Isso comments
+[Params]
+  [Params.isso] # Presence of .Site.Params.isso will enable Isso comments
     server = "localhost:1234" # Mandatory variable
     # hidenamefield = true # uncomment this line to hide the Name field
     # hideemailfield = true # uncomment this line to hide the Email field
