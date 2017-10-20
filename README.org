@@ -64,3 +64,26 @@ to be present.
   [Params.remarkbox] # Presence of .Site.Params.remarkbox will enable Remarkbox comments
     owner_key = "fmcwgrsa-qlym-gces-bkkv-srvpfjsutwhg" # random keys used here for example
 #+END_EXAMPLE
+*** Useful CSS for the Remarkbox iframe
+Add the below to /Custom stylesheet/ on =https://my.remarkbox.com/ns/YOUR-NAMESPACE/settings=.
+#+BEGIN_SRC css
+/* Reduce the comment box height */
+.common-textarea {
+    height: 40px;
+}
+
+/* Reduce the empty space below the "save message" button */
+body > .main {
+    height: 160px;
+}
+
+/* Hide the default centered Remarkbox tag */
+body > .main > center {
+    display: none;
+}
+
+/* Hide the default centered Remarkbox logo */
+#remarkbox-footer {
+    display: none;
+}
+#+END_SRC
