@@ -1,4 +1,7 @@
 {{ define "main" }} <!-- https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae -->
+
+<h1>{{ .Title }}</h1>
+
 <section>
     <form action="{{ "search" | absURL }}">
         <input id="search-query" name="s"/>
