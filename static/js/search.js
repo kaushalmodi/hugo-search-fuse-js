@@ -29,7 +29,10 @@ if(searchQuery){
 }
 
 function executeSearch(searchQuery){
-    $.getJSON( "/index.json", function( data ) {
+    // Assuming that this script is always called from baseURL/search/, it can
+    // be safely assumed that baseURL/index.json exists. This works even when
+    // the baseURL is something like https://example.com/v1/.
+    $.getJSON( "../index.json", function( data ) {
         var pages = data;
         var fuse = new Fuse(pages, fuseOptions);
         var result = fuse.search(searchQuery);
