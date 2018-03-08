@@ -14,8 +14,6 @@ This theme can be tweaked using the following =[Params]= variables in
 
   # https://github.com/poole/lanyon#themes
   themecolorbase = "8" # Valid values: "8", "9", "a", "b", "c", "d", "e", "f"
-
-  defaultsection = "posts" # Use in Refined theme (layouts/_default/rss.xml)
 #+END_EXAMPLE
 ** Isso comment support
 :PROPERTIES:
