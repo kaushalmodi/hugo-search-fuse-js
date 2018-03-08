@@ -1,22 +1,23 @@
 // https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae
 
-// how many characters to include on either side of match keyword
+// How many characters to include on either side of match keyword
 summaryInclude=60;
-//options for fuse.js
+// Options for fuse.js
 var fuseOptions = {
     shouldSort: true,
+    includeMatches: true,
     tokenize: true,
     matchAllTokens: true,
-    includeMatches: true,
-    threshold: 0.1,
+    threshold: 0.0,
     location: 0,
     distance: 100,
-    maxPatternLength: 32,
+    maxPatternLength: 64,
     minMatchCharLength: 3,
     keys: [
-        "title",
-        "contents",
-        "tags"
+        {name:"title",weight:0.8},
+        {name:"tags",weight:0.5},
+        {name:"categories",weight:0.5},
+        {name:"contents",weight:0.4}
     ]
 };
 
@@ -50,24 +51,15 @@ function populateResults(result){
         var contents= value.item.contents;
         var snippet = "";
         var snippetHighlights=[];
-        var tags =[];
-        $.each(value.matches,function(matchKey,mvalue){
-            if(mvalue.key == "tags"){
-                snippetHighlights.push(mvalue.value);
-            }else if(mvalue.key == "contents"){
-                start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
-                end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
-                snippet += contents.substring(start,end);
-                snippetHighlights.push(mvalue.value.substring(mvalue.indices[0][0],mvalue.indices[0][1]-mvalue.indices[0][0]+1));
-            }
-        });
+        snippetHighlights.push(searchQuery);
+
         if(snippet.length<1){
             snippet += contents.substring(0,summaryInclude*2);
         }
-        //pull template from hugo templarte definition
+        // Pull template from hugo template definition
         var templateDefinition = $('#search-result-template').html();
-        //replace values
-        var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,tags:value.item.tags,snippet:snippet});
+        // Replace values
+        var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,tags:value.item.tags,categories:value.item.categories,snippet:snippet});
         $('#search-results').append(output);
 
         $.each(snippetHighlights,function(snipkey,snipvalue){
@@ -78,7 +70,9 @@ function populateResults(result){
 }
 
 function param(name) {
-    return (location.search.split(name + '=')[1] || '').split('&')[0];
+    // If the search is a phrase like "foo bar", it becomes "foo+bar". The
+    // "replace(/\+/g, ' ')" portion replaces the "+" chars with spaces again.
+    return decodeURIComponent((location.search.split(name + '=')[1] || '').split('&')[0]).replace(/\+/g, ' ');
 }
 
 function render(templateString, data) {
