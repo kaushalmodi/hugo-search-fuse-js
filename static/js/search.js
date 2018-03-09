@@ -21,7 +21,7 @@ var fuseOptions = {
     ]
 };
 
-var searchQuery = param("s");
+var searchQuery = param("q");
 if(searchQuery){
     $("#search-query").val(searchQuery);
     executeSearch(searchQuery);
