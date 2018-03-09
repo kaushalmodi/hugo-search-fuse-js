@@ -3,7 +3,7 @@
 <h1>{{ .Title }}</h1>
 
 <section>
-    <form action="{{ "search/" | absURL }}">
+    <form action="{{ .Permalink }}">
         <input id="search-query" name="q"/>
     </form>
     <div id="search-results">
