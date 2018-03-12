@@ -2,6 +2,8 @@
 
 <h1>{{ .Title }}</h1>
 
+{{/* partial "debugprint.html" (.Site.GetPage "page" "search") */}}
+
 <section>
     <form action="{{ .Permalink }}">
         <input id="search-query" name="q"/>
