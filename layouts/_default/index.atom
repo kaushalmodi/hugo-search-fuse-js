@@ -1,0 +1,48 @@
+{{/*
+# Add below to your site config for Atom feed generation to work.
+# https://gist.github.com/lpar/7ded35d8f52fef7490a5be92e6cd6937
+[mediaTypes]
+  [mediaTypes."application/atom"]
+    suffix = "atom"
+
+[outputFormats.Atom]
+  mediaType = "application/atom"
+  baseName = "index"
+  isPlainText = false
+
+[outputs]
+  home = ["HTML", "RSS", "Atom"] # default = ["HTML", "RSS"]
+*/}}{{- $chomp := true -}}
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <link href="{{ .Permalink }}index.atom" rel="self"/>
+    <link href="{{ .Permalink }}"/>
+    {{- if not .Date.IsZero }}
+        <updated>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
+    {{ end -}}
+    <id>{{ .Permalink }}</id>
+    {{ with .Site.Author.name -}}
+        <author>
+            <name>{{ . }}</name>
+            {{ with $.Site.Author.email }}
+                <email>{{ . }}</email>
+            {{ end -}}
+        </author>
+    {{ end -}}
+    <generator>Hugo -- gohugo.io</generator>
+    {{- range .Pages }}
+        <entry>
+            {{ printf "<title type=\"html\"><![CDATA[%s]]></title>" .Title | safeHTML }}
+            <link href="{{ .Permalink }}"/>
+            <id>{{ .Permalink }}</id>
+            {{- range .Param "author" }}
+                <author>
+                    <name>{{ . }}</name>
+                </author>
+            {{ end -}}
+            <published>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</published>
+            <updated>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
+            {{ printf "<content type=\"html\"><![CDATA[%s]]></content>" .Content | safeHTML }}
+        </entry>
+    {{ end }}
+</feed>
