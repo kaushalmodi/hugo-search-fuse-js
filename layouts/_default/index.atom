@@ -30,7 +30,7 @@
         </author>
     {{ end -}}
     <generator>Hugo -- gohugo.io</generator>
-    {{- range .Pages }}
+    {{- range (where .Pages "Type" "in" .Site.Params.mainSections) }}
         <entry>
             {{ printf "<title type=\"html\"><![CDATA[%s]]></title>" .Title | safeHTML }}
             <link href="{{ .Permalink }}"/>
