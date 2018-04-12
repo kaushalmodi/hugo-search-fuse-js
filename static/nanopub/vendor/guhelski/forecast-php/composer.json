@@ -1,0 +1,22 @@
+{
+    "name": "guhelski/forecast-php",
+    "description": "Drop dead simple DarkSky.net API v2 wrapper in PHP",
+    "keywords": ["darksky", "darksky.net", "forecast", "forecast.io", "weather"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Guilherme Uhelski",
+            "email": "guilherme@uhelski.org",
+            "homepage": "http://uhelski.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
+    }
+}

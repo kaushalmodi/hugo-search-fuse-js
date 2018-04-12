@@ -1,0 +1,12 @@
+media.php
+nanopub.taskpaper
+vendor/cebe/markdown/tests/
+vendor/indieweb/link-rel-parser/tests/
+vendor/ezyang/htmlpurifier/tests/
+vendor/j7mbo/twitter-api-php/test/
+vendor/mf2/mf2/tests/
+vendor/p3k/xray/tests/
+vendor/symfony/yaml/Tests/
+vendor/zendframework/zendxml/tests/
+vendor/tantek/cassis/php-tests/
+vendor/tantek/cassis/js-tests/

@@ -1,0 +1,26 @@
+{
+  "name": "indieweb/link-rel-parser",
+  "type": "library",
+  "description": "Parse rel values from HTTP headers",
+  "keywords": ["indieweb", "http", "microformats2"],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/indieweb/link-rel-parser-php",
+  "authors" : [
+    {
+      "name": "Tantek Çelik",
+      "homepage": "http://tantek.com"
+    },
+    {
+      "name": "Aaron Parecki",
+      "homepage": "http://aaronparecki.com"
+    }
+  ],
+  "require": {
+      "php": ">=5.3.0"
+  },
+  "autoload": {
+    "files": [
+      "src/IndieWeb/link_rel_parser.php"
+    ]    
+  }
+}
