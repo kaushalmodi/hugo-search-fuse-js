@@ -12,8 +12,7 @@ This theme can be tweaked using the following =[Params]= variables in
   # Go date formats: https://golang.org/pkg/time/#pkg-constants
   dateform = "Mon Jan 2, 2006"
 
-  # https://github.com/poole/lanyon#themes
-  themecolorbase = "8" # Valid values: "8", "9", "a", "b", "c", "d", "e", "f"
+  themecolorbase = "red" # Valid values: "red", "orange", "yellow", "green", "cyan", "blue", "magenta", "brown"
 #+END_EXAMPLE
 ** Isso comment support
 :PROPERTIES:
