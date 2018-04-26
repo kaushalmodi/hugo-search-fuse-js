@@ -1,0 +1,4 @@
+The wrapper.js simply contains:
+
+1. fragmentions.js copied from https://github.com/chapmanu/fragmentions/
+2. fragmentioner.js copied from https://github.com/kartikprabhu/fragmentioner/
