@@ -16,9 +16,11 @@
 
 <!-- This template is sucked in by search.js and appended to the search-results
      div above. So editing here will adjust style.
+
+     https://report-uri.com/home/hash/
+     sha256-GzxpZwNj3SLrWF4bLh1Vu/9ek9DUECAJbuZDcXl3qIc=
 -->
-<script id="search-result-template" type="text/x-js-template">
-    <div id="summary-${key}">
+<script id="search-result-template" type="text/x-js-template"><div id="summary-${key}">
         <h2><a href="${link}">${title}</a></h2>
         <p>${snippet}</p>
         <small>
@@ -27,8 +29,7 @@
                 ${ isset categories }<tr><td><strong>Categories</strong></td><td>${categories}</td></tr>${ end }
             </table>
         </small>
-    </div>
-</script>
+    </div></script>
 {{ end }}
 
 {{ define "footer" }}
