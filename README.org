@@ -5,7 +5,7 @@
 This theme can be tweaked using the following =[Params]= variables in
 =config.toml=.
 
-#+BEGIN_EXAMPLE
+#+begin_example
 [Params]
   tagline = "My random notes"
 
@@ -13,7 +13,7 @@ This theme can be tweaked using the following =[Params]= variables in
   dateform = "Mon Jan 2, 2006"
 
   themecolorbase = "red" # Valid values: "red", "orange", "yellow", "green", "cyan", "blue", "magenta", "brown"
-#+END_EXAMPLE
+#+end_example
 ** Isso comment support
 :PROPERTIES:
 :CUSTOM_ID: isso-comment-support
@@ -32,7 +32,7 @@ present.
 - =.Site.Params.isso.tagline= -- This is an HTML string which is appended at the
   end of the Isso comment thread. Below example gives an idea of how this can be
   used.
-#+BEGIN_EXAMPLE
+#+begin_example
 [Params]
   [Params.isso] # Presence of .Site.Params.isso will enable Isso comments
     server = "localhost:1234" # Mandatory variable
@@ -46,7 +46,7 @@ present.
                       <code>`monospace`</code>,
                       <code>```</code>&#92;nmulti-line&#92;ncode&#92;n<code>```</code>
             </small></p>"""
-#+END_EXAMPLE
+#+end_example
 ** Remarkbox comment support
 :PROPERTIES:
 :CUSTOM_ID: remarkbox-comment-support
@@ -56,14 +56,14 @@ to be present.
 
 - =.Site.Params.remarkbox.owner_key= -- This is a mandatory variable. Enter your
   Remarkbox =rb_owner_key= value here.
-#+BEGIN_EXAMPLE
+#+begin_example
 [Params]
   [Params.remarkbox] # Presence of .Site.Params.remarkbox will enable Remarkbox comments
     owner_key = "fmcwgrsa-qlym-gces-bkkv-srvpfjsutwhg" # random keys used here for example
-#+END_EXAMPLE
+#+end_example
 *** Useful CSS for the Remarkbox iframe
 Add the below to /Custom stylesheet/ on =https://my.remarkbox.com/ns/YOUR-NAMESPACE/settings=.
-#+BEGIN_SRC css
+#+begin_src css
 /* Reduce the comment box height */
 .common-textarea {
     height: 40px;
@@ -83,4 +83,4 @@ body > .main > center {
 #remarkbox-footer {
     display: none;
 }
-#+END_SRC
+#+end_src
