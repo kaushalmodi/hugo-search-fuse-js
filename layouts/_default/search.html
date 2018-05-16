@@ -15,8 +15,8 @@
 </div>
 
 <script id="search-result-template" type="text/x-js-template"><div id="summary-${key}">
-        <h2><a href="${link}">${title}</a></h2>
-        <p>${snippet}</p>
+        <h2 class="post-title no-text-decoration"><a href="${link}">${title}</a></h2>
+        <p><em>${snippet}&hellip;</em></p>
         <small>
             <table>
                 ${ isset tags }<tr><td><strong>Tags</strong></td><td>${tags}</td></tr>${ end }
