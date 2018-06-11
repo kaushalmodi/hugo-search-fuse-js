@@ -27,11 +27,8 @@
 {{ end }}
 
 {{ define "footer" }}
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script> -->
-<script src="{{ partial "asset.html" (dict "Site" .Site "asset" "js/libs/jquery/3.3.1/jquery.min.js") }}"></script>
-<script src="{{ partial "asset.html" (dict "Site" .Site "asset" "js/libs/fuse.js/3.2.0/fuse.min.js") }}"></script>
-<script src="{{ partial "asset.html" (dict "Site" .Site "asset" "js/libs/mark.js/8.11.1/jquery.mark.min.js") }}"></script>
-<script src="{{ partial "asset.html" (dict "Site" .Site "asset" "js/search.js") }}"></script>
+<script src={{ "js/libs/jquery/3.3.1/jquery.min.js" | absURL }}></script>
+<script src={{ "js/libs/fuse.js/3.2.0/fuse.min.js" | absURL }}></script>
+<script src={{ "js/libs/mark.js/8.11.1/jquery.mark.min.js" | absURL }}></script>
+<script src={{ "js/search.js" | absURL }}></script>
 {{ end }}
