@@ -1,3 +1,14 @@
+* Minimum requirement
+Hugo 0.42
+* Theme components
+This theme is composed of the base theme "refined", and other components.
+
+To use this theme, you need to clone this theme and the components too:
+#+begin_example
+cd HUGO_SITE_DIR/themes
+git clone https://gitlab.com/kaushalmodi/hugo-theme-refined refined
+git clone https://github.com/kaushalmodi/hugo-debugprint hugo-debugprint
+#+end_example
 * Theme variables
 :PROPERTIES:
 :CUSTOM_ID: theme-variables
