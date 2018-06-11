@@ -30,5 +30,8 @@
 <script src={{ "js/libs/jquery/3.3.1/jquery.min.js" | absURL }}></script>
 <script src={{ "js/libs/fuse.js/3.2.0/fuse.min.js" | absURL }}></script>
 <script src={{ "js/libs/mark.js/8.11.1/jquery.mark.min.js" | absURL }}></script>
-<script src={{ printf "%s?%#v" ("js/search.js" | absURL) (now.Unix) }}></script>
+
+<!-- Below works *only if* this theme component is named "hugo-search-fuse-js".  -->
+{{ $search_js_md5 := (readFile "themes/hugo-search-fuse-js/static/js/search.js" | md5) }}
+<script src={{ printf "%s?%s" ("js/search.js" | absURL) $search_js_md5 }}></script>
 {{ end }}
