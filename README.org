@@ -8,5 +8,3 @@ To use this:
    #+begin_example
    theme = ["hugo-search-fuse-js", "my-theme"]
    #+end_example
-
-*Requires Hugo 0.45.*

@@ -1,0 +1,15 @@
+name = "Search using Fuse.js"
+license = "GPLv3"
+licenselink = "https://github.com/kaushalmodi/hugo-search-fuse-js/blob/master/LICENSE"
+description = "Hugo theme component for implementing static site search using Fuse.js"
+homepage = "https://hugo-bare-min.netlify.com/"
+tags = ["component", "search", "fuse-js"]
+features = ["search"]
+min_version = "0.45"
+
+[author]
+  name = "Kaushal Modi"
+  homepage = "https://scripter.co"
+
+# theme.toml template for a Hugo theme
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
