@@ -5,7 +5,7 @@ description = "Hugo theme component for implementing static site search using Fu
 homepage = "https://hugo-bare-min.netlify.com/"
 tags = ["component", "search", "fuse-js"]
 features = ["search"]
-min_version = "0.45"
+min_version = "0.53"
 
 [author]
   name = "Kaushal Modi"
