@@ -8,3 +8,18 @@ To use this:
    #+begin_example
    theme = ["hugo-search-fuse-js", "my-theme"]
    #+end_example
+3. Create ~content/search.md~ with ~layout~ parameter set to
+   ~"search"~, and ~output~ parameter set to ~["html", "json"]~. The
+   content or body of this ~search.md~ is not used by the
+   ~search.html~ template that's part of this theme component.
+
+   Here is an example ~search.md~:
+   #+begin_src md
+   +++
+   title = "Search"
+   layout = "search"
+   outputs = ["html", "json"]
+   [sitemap]
+     priority = 0.1
+   +++
+   #+end_src
