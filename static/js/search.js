@@ -21,7 +21,14 @@ let fuseOptions = {
   ]
 };
 
-let searchQuery = new URLSearchParams(window.location.search).get('q');
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  let regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+  let results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+let searchQuery = getUrlParameter('q');
 
 if(searchQuery){
   document.getElementById("search-query").value = searchQuery;
