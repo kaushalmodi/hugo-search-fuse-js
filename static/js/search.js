@@ -64,13 +64,19 @@ function populateResults(result){
       snippet += contents.substring(0,summaryInclude*2);
     }
     snippet += "…";
+
+    // Lifted from https://stackoverflow.com/posts/3700369/revisions
+    var elem = document.createElement('textarea');
+    elem.innerHTML = snippet;
+    var decoded = elem.value;
+
     // Pull template from hugo template definition
     let frag = document.getElementById('search-result-template').content.cloneNode(true);
     // Replace values
     frag.querySelector(".search_summary").setAttribute("id", "summary-" + key);
     frag.querySelector(".search_link").setAttribute("href", value.item.permalink);
     frag.querySelector(".search_title").textContent = value.item.title;
-    frag.querySelector(".search_snippet").textContent = snippet;
+    frag.querySelector(".search_snippet").textContent = decoded;
     let tags = value.item.tags;
     if (tags) {
       frag.querySelector(".search_tags").textContent = tags;
