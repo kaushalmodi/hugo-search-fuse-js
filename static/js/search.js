@@ -1,4 +1,4 @@
-
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
 // How many characters to include on either side of match keyword
 const summaryInclude=60;
 
@@ -96,3 +96,4 @@ function populateResults(result){
     document.getElementById("search-results").appendChild(frag);
   });
 }
+// @license-end
