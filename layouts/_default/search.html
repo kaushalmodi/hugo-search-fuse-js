@@ -29,6 +29,7 @@
 {{ define "footer" }}
   <!-- If you don't need IE 11 support you can remove this next script block -->
   <script type="text/javascript">
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
     if (window.navigator.userAgent.indexOf('Trident/') > 0) {
       let urls = [
         {{ "js/libs/iecompat/promises.min.js" | absURL }},
@@ -43,6 +44,7 @@
         head.appendChild(script);
       });
     }
+    // @license-end
   </script>
   <!-- These are the two libraries needed for current browsers. -->
   <script src={{ "js/libs/fuse.js/3.2.1/fuse.min.js" | absURL }}></script>
