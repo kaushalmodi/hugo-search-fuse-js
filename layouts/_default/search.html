@@ -11,19 +11,40 @@
   </form>
   <hr />
 
+  {{ partial "htmlmin-ignore-comment" . }}
   <div id="search-results"></div>
+  {{ partial "htmlmin-ignore-comment" . }}
 </div>
 
 <template id="search-result-template"><div class="search_summary">
-  <h2 class="post-title no-text-decoration"><a class="search_link search_title" href=""></a></h2>
-  <p><em class="search_snippet"></em></p>
+  <h2 class="post-title no-text-decoration">
+    {{ partial "htmlmin-ignore-comment" . }}
+    <a class="search_link search_title" href=""></a>
+    {{ partial "htmlmin-ignore-comment" . }}
+  </h2>
+  <p>
+    {{ partial "htmlmin-ignore-comment" . }}
+    <em class="search_snippet"></em>
+    {{ partial "htmlmin-ignore-comment" . }}
+  </p>
   <small>
     <table>
-      <tr class="search_iftags"><td><strong>Tags</strong></td><td class="search_tags"></td></tr>
-      <tr class="search_ifcategories"><td><strong>Categories</strong></td><td class="search_categories"></td></tr>
+      <tr class="search_iftags">
+        <td><strong>Tags</strong></td>
+        {{ partial "htmlmin-ignore-comment" . }}
+        <td class="search_tags"></td>
+        {{ partial "htmlmin-ignore-comment" . }}
+      </tr>
+      <tr class="search_ifcategories">
+        <td><strong>Categories</strong></td>
+        {{ partial "htmlmin-ignore-comment" . }}
+        <td class="search_categories"></td>
+        {{ partial "htmlmin-ignore-comment" . }}
+      </tr>
     </table>
   </small>
-  </div></template>
+  </div>
+</template>
 {{ end }}
 
 {{ define "footer" }}
@@ -47,11 +68,15 @@
     // @license-end
   </script>
   <!-- These are the two libraries needed for current browsers. -->
+  {{ partial "htmlmin-ignore-comment" . }}
   <script src={{ "js/libs/fuse.js/3.2.1/fuse.min.js" | absURL }}></script>
   <script src={{ "js/libs/mark.js/9.0.0/mark.min.js" | absURL }}></script>
+  {{ partial "htmlmin-ignore-comment" . }}
 
   <!-- Below works *only if* this theme component is named "hugo-search-fuse-js"
        AND *if* the themesDir is left at the default value of "themes".  -->
   {{ $search_js_md5 := (readFile "themes/hugo-search-fuse-js/static/js/search.js" | md5) }}
+  {{ partial "htmlmin-ignore-comment" . }}
   <script src={{ printf "%s?%s" ("js/search.js" | absURL) $search_js_md5 }}></script>
+  {{ partial "htmlmin-ignore-comment" . }}
 {{ end }}
