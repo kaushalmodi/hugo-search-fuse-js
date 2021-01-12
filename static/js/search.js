@@ -61,7 +61,20 @@ function populateResults(result){
     let snippetHighlights=[];
     snippetHighlights.push(searchQuery);
     if(snippet.length<1){
-      snippet += contents.substring(0,summaryInclude*2);
+      var getSentenceByWordRegex = new RegExp( 
+        `[^.?!]*(?<=[.?\\s!])${searchQuery}(?=[\\s.?!])[^.?!]*[.?!]`,
+        'i'
+      );
+      var maxTextLength = summaryInclude*2
+      var start = contents.indexOf(
+        getSentenceByWordRegex.exec(contents)
+      );
+      var end = start + maxTextLength
+      
+      if (end > contents.length){
+        end = contents.length
+      }
+      snippet += contents.substring(start, end);
     }
     snippet += "…";
 
