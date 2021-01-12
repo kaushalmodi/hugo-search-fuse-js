@@ -1,5 +1,6 @@
 <!-- Needed to make this theme compatible with the "removeEmptyElements = true" 
      option of the netlify-plugin-minify-html plugin -->
+     
 {{- with $.Site.Params.useHtmlMin -}}
    {{- if $.Site.Params.useHtmlMin -}}
       {{- printf "<!-- htmlmin:ignore -->" | safeHTML -}}
