@@ -1,7 +1,82 @@
 {{ define "main" }} <!-- https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae -->
-   {{ partial "search-body" . }}
+
+<div class="search">
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{/* partial "debugprint.html" (site.GetPage "/search") */}}
+  </header>
+
+  <form action="{{ .Permalink }}">
+    <input id="search-query" name="q"/>
+  </form>
+  <hr />
+
+  {{ partial "htmlmin-ignore-comment" . }}
+  <div id="search-results"></div>
+  {{ partial "htmlmin-ignore-comment" . }}
+</div>
+
+<template id="search-result-template"><div class="search_summary">
+  <h2 class="post-title no-text-decoration">
+    {{ partial "htmlmin-ignore-comment" . }}
+    <a class="search_link search_title" href=""></a>
+    {{ partial "htmlmin-ignore-comment" . }}
+  </h2>
+  <p>
+    {{ partial "htmlmin-ignore-comment" . }}
+    <em class="search_snippet"></em>
+    {{ partial "htmlmin-ignore-comment" . }}
+  </p>
+  <small>
+    <table>
+      <tr class="search_iftags">
+        <td><strong>Tags</strong></td>
+        {{ partial "htmlmin-ignore-comment" . }}
+        <td class="search_tags"></td>
+        {{ partial "htmlmin-ignore-comment" . }}
+      </tr>
+      <tr class="search_ifcategories">
+        <td><strong>Categories</strong></td>
+        {{ partial "htmlmin-ignore-comment" . }}
+        <td class="search_categories"></td>
+        {{ partial "htmlmin-ignore-comment" . }}
+      </tr>
+    </table>
+  </small>
+  </div>
+</template>
 {{ end }}
 
 {{ define "footer" }}
-   {{ partial "search-js" . }}
+  <!-- If you don't need IE 11 support you can remove this next script block -->
+  <script type="text/javascript">
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    if (window.navigator.userAgent.indexOf('Trident/') > 0) {
+      let urls = [
+        {{ "js/libs/iecompat/promises.min.js" | absURL }},
+        {{ "js/libs/iecompat/fetch.min.js" | absURL }},
+        {{ "js/libs/iecompat/template.min.js" | absURL }},
+        {{ "js/libs/iecompat/remove.min.js" | absURL }}
+      ];
+      let head = document.getElementsByTagName("head")[0];
+      urls.forEach(function(url) {
+        let script = document.createElement("script");
+        script.src = url;
+        head.appendChild(script);
+      });
+    }
+    // @license-end
+  </script>
+  <!-- These are the two libraries needed for current browsers. -->
+  {{ partial "htmlmin-ignore-comment" . }}
+  <script src={{ "js/libs/fuse.js/3.2.1/fuse.min.js" | absURL }}></script>
+  <script src={{ "js/libs/mark.js/9.0.0/mark.min.js" | absURL }}></script>
+  {{ partial "htmlmin-ignore-comment" . }}
+
+  <!-- Below works *only if* this theme component is named "hugo-search-fuse-js"
+       AND *if* the themesDir is left at the default value of "themes".  -->
+  {{ $search_js_md5 := (readFile "themes/hugo-search-fuse-js/static/js/search.js" | md5) }}
+  {{ partial "htmlmin-ignore-comment" . }}
+  <script src={{ printf "%s?%s" ("js/search.js" | absURL) $search_js_md5 }}></script>
+  {{ partial "htmlmin-ignore-comment" . }}
 {{ end }}
