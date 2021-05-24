@@ -1,7 +1,7 @@
 
 # Hugo live search using Fuse.js and Mark.js
 
-This is not a standalone theme. This is a Hugo [theme component](https://gohugo.io/themes/theme-components/).
+This is not a standalone theme. This is a Hugo [theme component](https://gohugo.io/hugo-modules/theme-components/).
 To use it:
 
 1.  Clone this repo to `your-site/themes/hugo-search-fuse-js` directory.
