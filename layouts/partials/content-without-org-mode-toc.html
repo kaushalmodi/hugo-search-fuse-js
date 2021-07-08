@@ -1,0 +1,10 @@
+<!-- Split the page content. Grab the content before and after the TOC -->
+{{- $contentSplit := split .Content "<div class=\"ox-hugo-toc toc" -}}
+{{- $contentBeforeTOC := (index $contentSplit 0) -}}
+
+{{- $contentSplit2 := split (index $contentSplit 1) "<!--endtoc-->" -}}
+{{- $contentAfterTOC := index $contentSplit2 1 -}}
+
+<!-- Content without org-mode TOC -->
+{{- $contentBeforeTOC | safeHTML -}}
+{{- $contentAfterTOC | safeHTML -}}
