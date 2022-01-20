@@ -50,6 +50,6 @@
   <script src={{ "js/libs/fuse.js/3.2.1/fuse.min.js" | absURL }}></script>
   <script src={{ "js/libs/mark.js/9.0.0/mark.min.js" | absURL }}></script>
 
-  {{ $search_js_md5 := (resources.Get "js/search.js" | md5) }}
-  <script src={{ printf "%s?%s" ("js/search.js" | absURL) $search_js_md5 }}></script>
+  {{ $search_js := resources.Get "js/search.js" }}
+  <script src={{ printf "%s?%s" $search_js.RelPermalink ($search_js | md5) }}></script>
 {{ end }}
