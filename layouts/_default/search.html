@@ -50,8 +50,6 @@
   <script src={{ "js/libs/fuse.js/3.2.1/fuse.min.js" | absURL }}></script>
   <script src={{ "js/libs/mark.js/9.0.0/mark.min.js" | absURL }}></script>
 
-  <!-- Below works *only if* this theme component is named "hugo-search-fuse-js"
-       AND *if* the themesDir is left at the default value of "themes".  -->
-  {{ $search_js_md5 := (readFile "themes/hugo-search-fuse-js/static/js/search.js" | md5) }}
-  <script src={{ printf "%s?%s" ("js/search.js" | absURL) $search_js_md5 }}></script>
+  {{ $search_js := resources.Get "js/search.js" }}
+  <script src={{ printf "%s?%s" $search_js.RelPermalink ($search_js | md5) }}></script>
 {{ end }}
