@@ -13,7 +13,11 @@ To use this component,
         path = "github.com/kaushalmodi/hugo-search-fuse-js"
     ```
 
-2.  Run `hugo mod -get -u` in your main site directory.
+2.  Run `hugo mod get -u` in your main site directory.
+    The main site repo needs to be a Hugo module
+    as well (it needs to have its own `go.mod`). 
+    To make it one, run `hugo mod init <your site url or any unique string>`
+    in your site repo before you do this step.
 
 3.  Create `content/search.md` with `layout` parameter set to "search",
     and `output` parameter set to `["html", "json"]`. The content or
