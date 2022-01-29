@@ -61,7 +61,48 @@ function populateResults(result){
     let snippetHighlights=[];
     snippetHighlights.push(searchQuery);
     if(snippet.length<1){
-      snippet += contents.substring(0,summaryInclude*2);
+      var getSentenceByWordRegex = new RegExp( 
+        `[^.?!]*(?<=[.?\\s!])${searchQuery}(?=[\\s.?!])[^.?!]*[.?!]`,
+        'i'
+      );
+      var maxTextLength = summaryInclude*2
+      // Index of the matched search term
+      var indexOfMatch = contents.toLowerCase().indexOf(
+        searchQuery.toLowerCase()
+      );
+      // Index of the first word of the sentence with the search term in it
+      var indexOfSentence = contents.indexOf(
+        getSentenceByWordRegex.exec(contents)
+      );
+      
+      var start 
+      var cutStart = false
+      // Is the match in the result?
+      if(indexOfSentence+maxTextLength < indexOfMatch){
+        // Make sure that the match is in the result
+        start = indexOfMatch
+        // This bool is used to replace the first part with '...'
+        cutStart = true 
+      } else {
+        // Match is in view, even if we show the whole sentence
+        start = indexOfSentence
+      }
+      
+      // Change end length to the text length if it is longer than 
+      // the text length to prevent problems
+      var end = start + maxTextLength 
+      if (end > contents.length){
+        end = contents.length
+      }
+
+      if(cutStart){
+        // Replace first three characters with '...'
+        end -= 3;
+        snippet += "…" + contents.substring(start, end).trim();
+      }
+      else{
+        snippet += contents.substring(start, end).trim();
+      }     
     }
     snippet += "…";
 

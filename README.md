@@ -1,26 +1,31 @@
-
 # Hugo live search using Fuse.js and Mark.js
 
-This is not a standalone theme. This is a Hugo [theme component](https://gohugo.io/themes/theme-components/).
-To use it:
+This is not a standalone theme. This is a Hugo [theme
+component](https://gohugo.io/hugo-modules/theme-components/).
 
-1.  Clone this repo to `your-site/themes/hugo-search-fuse-js` directory.
-    *Note that the theme name has to remain `hugo-search-fuse-js`.*
+To use this component,
 
-2.  Add "hugo-search-fuse-js" as the leftmost element of the `theme`
-    list variable in your site's or theme's `config.toml`. Example:
-    
-    ``` example
-    theme = ["hugo-search-fuse-js", "my-theme"]
+1.  Add this to your site's TOML config file:
+
+    ```toml
+    [module]
+      [[module.imports]]
+        path = "github.com/kaushalmodi/hugo-search-fuse-js"
     ```
+
+2.  Run `hugo mod get -u` in your main site directory.
+    The main site repo needs to be a Hugo module
+    as well (it needs to have its own `go.mod`). 
+    To make it one, run `hugo mod init <your site url or any unique string>`
+    in your site repo before you do this step.
 
 3.  Create `content/search.md` with `layout` parameter set to "search",
     and `output` parameter set to `["html", "json"]`. The content or
     body of this `search.md` is not used by the `search.html` template
     which is part of this theme component.
-    
+
     Here is an example `search.md`:
-    
+
     ``` md
     +++
     title = "Search"
@@ -33,7 +38,13 @@ To use it:
 
 # Requirements
 
-For this theme component to work as-is:
+You need to install the latest version of Go from
+https://go.dev/doc/install because this theme component requires
+[`hugo mod ..` commands](https://gohugo.io/hugo-modules/use-modules/)
+to work.
+
+This update on switch to using Hugo Modules was last tested with Hugo
+v0.92.0.
 
 1.  Your main theme **must** be structured using [base template and
     blocks](https://gohugo.io/templates/base/#define-the-base-template),
@@ -86,4 +97,3 @@ gist](https://gist.github.com/eddiewebb/735feb48f50f0ddd65ae5606a1cb41ae).
    - [URLSearchParams](https://github.com/ungap/url-search-params)
    - [Template and fragment API](https://github.com/webcomponents/template)
    - [Node.remove](https://stackoverflow.com/questions/20428877/javascript-remove-doesnt-work-in-ie)
-
