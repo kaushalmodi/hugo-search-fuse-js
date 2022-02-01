@@ -27,16 +27,20 @@
 {{ end }}
 
 {{ define "footer" }}
+
+{{ $iecompat_scripts := "" }}
+{{ range $i, $e := resources.Match "js/iecompat/*.js" }}
+    {{ if $i }}
+        {{ $iecompat_scripts = (printf "%s," $iecompat_scripts) }}
+    {{ end }}
+    {{ $iecompat_scripts = (printf "%s%#v" $iecompat_scripts $e.RelPermalink) }}
+{{ end }}
+
 <!-- If you don't need IE 11 support you can remove this next script block -->
 <script type="text/javascript">
  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
  if (window.navigator.userAgent.indexOf('Trident/') > 0) {
-     let urls = [
-         {{ (resources.Get "js/iecompat/promises.min.js").RelPermalink }},
-         {{ (resources.Get "js/iecompat/fetch.min.js").RelPermalink }},
-         {{ (resources.Get "js/iecompat/template.min.js").RelPermalink }},
-         {{ (resources.Get "js/iecompat/remove.min.js").RelPermalink }}
-     ];
+     let urls = [ {{- $iecompat_scripts | safeJS -}} ];
      let head = document.getElementsByTagName("head")[0];
      urls.forEach(function(url) {
          let script = document.createElement("script");
@@ -48,11 +52,8 @@
 </script>
 <!-- These are the two libraries needed for current browsers. -->
 
-{{ $fuse_js := resources.Get "js/libs/fuse.min.js" }}
-<script src={{ printf "%s?%s" $fuse_js.RelPermalink ($fuse_js | md5) }}></script>
-{{ $mark_js := resources.Get "js/libs/mark.min.js" }}
-<script src={{ printf "%s?%s" $mark_js.RelPermalink ($mark_js | md5) }}></script>
+<script src={{ printf "%s" (resources.Get "js/libs/fuse.min.js" | fingerprint).RelPermalink }}></script>
+<script src={{ printf "%s" (resources.Get "js/libs/mark.min.js" | fingerprint).RelPermalink }}></script>
 
-{{ $search_js := resources.Get "js/search.js" }}
-<script src={{ printf "%s?%s" $search_js.RelPermalink ($search_js | md5) }}></script>
+<script src={{ printf "%s" (resources.Get "js/search.js" | fingerprint).RelPermalink }}></script>
 {{ end }}
