@@ -48,8 +48,10 @@
 </script>
 <!-- These are the two libraries needed for current browsers. -->
 
-<script src={{ "js/libs/fuse.js/3.2.1/fuse.min.js" | absURL }}></script>
-<script src={{ "js/libs/mark.js/9.0.0/mark.min.js" | absURL }}></script>
+{{ $fuse_js := resources.Get "js/libs/fuse.min.js" }}
+<script src={{ printf "%s?%s" $fuse_js.RelPermalink ($fuse_js | md5) }}></script>
+{{ $mark_js := resources.Get "js/libs/mark.min.js" }}
+<script src={{ printf "%s?%s" $mark_js.RelPermalink ($mark_js | md5) }}></script>
 
 {{ $search_js := resources.Get "js/search.js" }}
 <script src={{ printf "%s?%s" $search_js.RelPermalink ($search_js | md5) }}></script>
