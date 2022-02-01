@@ -1,5 +1,10 @@
 {{- $.Scratch.Add "index" slice -}}
 {{- range site.RegularPages -}}
-    {{- $.Scratch.Add "index" (dict "title" .Title "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink) -}}
+    {{- $.Scratch.Add "index" (dict "title" .Title
+                                    "tags" .Params.tags
+                                    "categories" .Params.categories
+                                    "contents" ((partial "get-content-minus-toc.html" .) | plainify | replaceRE "\n" " ")
+                                    "permalink" .Permalink)
+      -}}
 {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}

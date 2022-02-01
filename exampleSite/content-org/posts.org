@@ -17,6 +17,25 @@ Content under heading 1.1
 Content under heading 2
 *** Heading 2.1
 Content under heading 2.1
+* Multiple TOCs in a post
+:PROPERTIES:
+:EXPORT_FILE_NAME: multiple-tocs
+:END:
+abc
+#+toc: headlines 1
+def
+** Heading 1
+ghi
+#+toc: headlines 1
+jkl
+*** Heading 1.1
+mno
+** Heading 2
+pqr
+#+toc: headlines 1
+stu
+*** Heading 2.1
+vwxyz
 * Section pages
 :PROPERTIES:
 :EXPORT_HUGO_SECTION: /

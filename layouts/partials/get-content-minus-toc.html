@@ -1,0 +1,4 @@
+<!-- Remove the content from ox-hugo inserted Org mode TOC -->
+{{- $content := .Content -}}
+{{- $content = replaceRE `<div class="ox-hugo-toc toc">(.|\n)*?<!--endtoc-->` "" $content -}}
+{{ return $content }}
