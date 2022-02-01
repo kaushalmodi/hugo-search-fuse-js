@@ -25,6 +25,11 @@
          }
         </style>
 
+        <!-- Below fixes the favicon.ico 404 error
+             https://stackoverflow.com/a/43791570/1219634
+        -->
+        <link rel="shortcut icon" href="#" />
+
         <title>
             {{ printf "%s | %s" .Title site.Title }}
         </title>
