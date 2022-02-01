@@ -32,10 +32,10 @@
  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
  if (window.navigator.userAgent.indexOf('Trident/') > 0) {
      let urls = [
-         {{ "js/libs/iecompat/promises.min.js" | absURL }},
-         {{ "js/libs/iecompat/fetch.min.js" | absURL }},
-         {{ "js/libs/iecompat/template.min.js" | absURL }},
-         {{ "js/libs/iecompat/remove.min.js" | absURL }}
+         {{ (resources.Get "js/iecompat/promises.min.js").RelPermalink }},
+         {{ (resources.Get "js/iecompat/fetch.min.js").RelPermalink }},
+         {{ (resources.Get "js/iecompat/template.min.js").RelPermalink }},
+         {{ (resources.Get "js/iecompat/remove.min.js").RelPermalink }}
      ];
      let head = document.getElementsByTagName("head")[0];
      urls.forEach(function(url) {
