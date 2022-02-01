@@ -1,0 +1,9 @@
+#+hugo_base_dir: ../.
+#+options: author:nil
+
+* Hello
+:PROPERTIES:
+:EXPORT_FILE_NAME: hello
+:END:
+
+This is a test post.

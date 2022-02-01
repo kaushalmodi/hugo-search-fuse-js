@@ -1,0 +1,8 @@
+title = "Hugo Search using Fuse.js"
+
+disableFastRender = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

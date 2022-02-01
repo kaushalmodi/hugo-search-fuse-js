@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+{{ if .IsHome }}
+    <h1>{{ .Title }}</h1>
+    <div style="margin-top: -1.5rem; font-weight: bold; color: grey;">{{ site.Param "subTitle" }}</div>
+
+    <h2>Posts</h2>
+
+    {{ range site.RegularPages.ByLastmod.Reverse }}
+        {{ .Render "summary"}}
+    {{ end }}
+{{ else }}
+    <h1>Posts in ‘{{ .Section }}’</h1>
+
+    <ul>
+        {{ range .RegularPages }}
+            <li>
+                <a href='{{ .Permalink }}'> {{ .Title }}</a>
+                {{ .Description | markdownify }}
+            </li>
+        {{ end }}
+    </ul>
+{{ end }}
+
+{{ with .Content }}
+    {{ . }}
+{{ end }}
+
+{{ end }}
+
+{{ define "footer" }}
+
+<hr>
+{{ if not .IsHome }}
+    <a href="{{ site.BaseURL }}">Back to Home</a> |
+{{ end }}
+
+{{ end }}

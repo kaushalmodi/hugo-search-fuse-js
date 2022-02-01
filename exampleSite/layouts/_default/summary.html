@@ -1,0 +1,20 @@
+<article>
+    <header>
+        <h3 class="post-title"><a href='{{ .Permalink }}'> {{ .Title }}</a> </h3>
+        {{ with .Date }}
+            {{ if (not (eq (dateFormat "2006-01-02" .) "0001-01-01")) }}
+                <span class="post-date">{{ dateFormat "Mon Jan 2, 2006" . | safeHTML }}</span>
+            {{ end }}
+        {{ end }}
+    </header>
+
+    {{- with .Description -}}
+        {{- . | markdownify | printf "<p>%s</p>" | safeHTML -}}
+    {{- else -}}
+        {{- .Summary |  printf "<p>%s</p>" | safeHTML -}}
+    {{- end -}}
+
+    {{ if (or .Truncated .Description) }}
+        <a href='{{ .Permalink }}'>Read more</a>
+    {{ end }}
+</article>

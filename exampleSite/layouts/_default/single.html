@@ -1,0 +1,34 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+
+{{ with .Description }}
+    <blockquote style="color: gray;">
+        {{ . | markdownify }}
+    </blockquote>
+{{ end }}
+
+{{ with .Content }}
+    {{ . }}
+{{ end }}
+
+{{ end }}
+
+{{ define "footer" }}
+
+{{ $page := .Page }}
+
+<div style="color: grey;">
+    {{ $hugo_version_string_1 := hugo.Version }}
+    {{ with hugo.CommitHash }} <!-- Example value: "975bb629:chroma-d5ca12b" -->
+        {{ $hugo_version_string_1 = printf `<a href="https://github.com/gohugoio/hugo/commit/%s">%s</a>` . $hugo_version_string_1 }}
+    {{ end }}
+    {{ $hugo_version_string := printf `<span class="nobr">Hugo %s</span>` $hugo_version_string_1 }}
+
+    <em>Built with {{ $hugo_version_string | safeHTML }}</em>
+</div>
+
+<hr>
+<a href="../">Go Up</a> | <a href="{{ site.BaseURL }}">Back to Home</a>
+
+{{ end }}
