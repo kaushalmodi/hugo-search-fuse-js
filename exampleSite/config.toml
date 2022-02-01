@@ -2,6 +2,10 @@ title = "Hugo Search using Fuse.js"
 
 disableFastRender = true
 
+[module]
+  [[module.imports]]
+    path = "github.com/kaushalmodi/hugo-search-fuse-js"
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
