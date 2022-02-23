@@ -34,7 +34,7 @@ if(searchQuery){
   document.getElementById("search-query").value = searchQuery;
   executeSearch(searchQuery);
 } else {
-  document.getElementById('search-results').innerHTML = "<p class=\"no-results\">Please enter a word or phrase above</p>";
+  document.getElementById('search-results').innerHTML = "<p class=\"no-results\"></p>";
 }
 
 function executeSearch(searchQuery) {
@@ -61,7 +61,7 @@ function populateResults(result){
     let snippetHighlights=[];
     snippetHighlights.push(searchQuery);
     if(snippet.length<1){
-      var getSentenceByWordRegex = new RegExp( 
+      var getSentenceByWordRegex = new RegExp(
         `[^.?!]*(?<=[.?\\s!])${searchQuery}(?=[\\s.?!])[^.?!]*[.?!]`,
         'i'
       );
@@ -74,23 +74,23 @@ function populateResults(result){
       var indexOfSentence = contents.indexOf(
         getSentenceByWordRegex.exec(contents)
       );
-      
-      var start 
+
+      var start
       var cutStart = false
       // Is the match in the result?
       if(indexOfSentence+maxTextLength < indexOfMatch){
         // Make sure that the match is in the result
         start = indexOfMatch
         // This bool is used to replace the first part with '...'
-        cutStart = true 
+        cutStart = true
       } else {
         // Match is in view, even if we show the whole sentence
         start = indexOfSentence
       }
-      
-      // Change end length to the text length if it is longer than 
+
+      // Change end length to the text length if it is longer than
       // the text length to prevent problems
-      var end = start + maxTextLength 
+      var end = start + maxTextLength
       if (end > contents.length){
         end = contents.length
       }
@@ -102,7 +102,7 @@ function populateResults(result){
       }
       else{
         snippet += contents.substring(start, end).trim();
-      }     
+      }
     }
     snippet += "…";
 
