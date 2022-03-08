@@ -36,7 +36,7 @@
 {{ end }}
 
 <!-- If you don't need IE 11 support you can remove this next script block -->
-<script type="text/javascript">
+<script>
  // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
  if (window.navigator.userAgent.indexOf('Trident/') > 0) {
      let urls = [ {{- $iecompat_scripts | safeJS -}} ];
@@ -49,6 +49,12 @@
  }
  // @license-end
 </script>
+
+<!--
+if(window.navigator.userAgent.indexOf("Trident/")>0){let e=["/js/iecompat/fetch.min.js","/js/iecompat/promises.min.js","/js/iecompat/remove.min.js","/js/iecompat/template.min.js"],t=document.getElementsByTagName("head")[0];e.forEach(function(n){let e=document.createElement("script");e.src=n,t.appendChild(e)})}
+
+https://report-uri.com/home/hash/ CSP Hash: 'sha256-wFmBttOvPvtTo5Dz9baqkFwDhIwWdpS2ap0mauKBz40='
+-->
 <!-- These are the two libraries needed for current browsers. -->
 
 <script src={{ printf "%s" (resources.Get "js/libs/fuse.min.js" | fingerprint).RelPermalink }}></script>
